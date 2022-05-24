@@ -10,7 +10,7 @@ import { store } from './app/redux/store'
 
 const Root = ReactDom.createRoot(document.getElementById('root'))
 const persistor = persistStore(store)
-
+//persistor.purge()
 Root.render(
   <Provider store={store}>
     <Router>

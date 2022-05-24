@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { Container, Col, Row } from 'react-bootstrap'
 
 import { Login } from '../components/auth/login'
@@ -15,6 +16,12 @@ export const LandingPage = ({ userState, allUsers }) => {
     serverError,
     dispatch
   } = Statement()
+
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    userState ? navigate('/home') : null
+  }, [userState])
 
   return (
     <div
