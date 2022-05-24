@@ -5,9 +5,11 @@ import { persistReducer } from 'redux-persist'
 import thunk from 'redux-thunk'
 
 import AuthSlice from './features/authSlice'
+import ProjectSlice from './features/projectsSlices'
 
 const reducers = combineReducers({
-  auth: AuthSlice
+  auth: AuthSlice,
+  projects: ProjectSlice
 })
 
 const persistConfig = {
