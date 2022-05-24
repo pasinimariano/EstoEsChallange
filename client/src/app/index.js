@@ -4,6 +4,7 @@ import { useLocation } from 'react-router-dom'
 
 import { RoutesWeb } from './routesWeb'
 import { Navigation } from './components/navigation/navBar'
+import { Footer } from './components/navigation/footer'
 import { Styles } from './mainStyles'
 
 export const App = () => {
@@ -15,6 +16,7 @@ export const App = () => {
     <div className={Styles}>
       {location !== '/' ? <Navigation location={location} /> : null}
       <RoutesWeb user={userState} allUsers={allUsersState} />
+      {location !== '/' ? <Footer /> : null}
     </div>
   )
 }

@@ -8,7 +8,6 @@ import Logo from '../../assets/logo.png'
 import { Styles } from './styles/navBarStyles'
 
 export const Navigation = ({ location }) => {
-  console.log(location)
   return (
     <Navbar bg='light' className='d-flex align-items-end'>
       <img alt='' src={Logo} className='d-inline-block align-top m-2' />

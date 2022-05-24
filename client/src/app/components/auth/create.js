@@ -26,10 +26,8 @@ export const Create = ({
     <Card style={Styles.mainContainer}>
       <Card.Body className='d-flex flex-column align-items-center'>
         <Image src={Logo} alt='EstoEsLogo' style={Styles.logo} />
-        <h3 style={Styles.title}>¡Bienvenid@ a Esto Es!</h3>
-        <h3 style={Styles.subtitle}>
-          Gestiona todos tus proyectos en tiempo real
-        </h3>
+        <h3 style={Styles.title}>¡Welcome to Esto Es!</h3>
+        <h3 style={Styles.subtitle}>Manage all your projects in real time</h3>
         <Formik
           initialValues={createValues}
           validationSchema={createUserSchema}
@@ -95,7 +93,7 @@ export const Create = ({
         className='d-flex justify-content-center'
       >
         <h6 style={Styles.title} onClick={() => setRender('login')}>
-          ¿Ya posees una cuenta? Registrate aquí
+          Already have an account? Register here
         </h6>
       </Card.Footer>
     </Card>

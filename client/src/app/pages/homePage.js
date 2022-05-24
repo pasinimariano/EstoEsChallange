@@ -1,5 +1,7 @@
 import React from 'react'
 
+import { ProjectList } from '../components/myProjects/projectsList'
+
 export const HomePage = () => {
-  return <h2>HOME</h2>
+  return <ProjectList />
 }

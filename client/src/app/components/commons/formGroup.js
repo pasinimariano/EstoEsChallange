@@ -13,7 +13,7 @@ export const FormGroup = ({
   errors
 }) => {
   return (
-    <Form.Group controlId={controlId} style={style}>
+    <Form.Group style={style}>
       <Form.Control
         type={type}
         name={name}

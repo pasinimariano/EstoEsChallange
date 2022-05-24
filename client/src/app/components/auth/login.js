@@ -19,8 +19,8 @@ export const Login = ({
     <Card style={Styles.mainContainer}>
       <Card.Body className='d-flex flex-column align-items-center'>
         <Image src={Logo} alt='EstoEsLogo' style={Styles.logo} />
-        <h3 style={Styles.title}>¡Bienvenid@ nuevamente!</h3>
-        <h3 style={Styles.subtitle}>Continúa trabajando en tiempo real</h3>
+        <h3 style={Styles.title}>¡Welcome back!</h3>
+        <h3 style={Styles.subtitle}>Continue working in real time</h3>
         <Formik
           initialValues={loginValues}
           validationSchema={loginUserSchema}
@@ -66,7 +66,7 @@ export const Login = ({
         className='d-flex justify-content-center'
       >
         <h6 style={Styles.title} onClick={() => setRender('create')}>
-          ¿Todavía no tienes cuenta? Creala aquí
+          Don't have an account yet? Create it here
         </h6>
       </Card.Footer>
     </Card>
