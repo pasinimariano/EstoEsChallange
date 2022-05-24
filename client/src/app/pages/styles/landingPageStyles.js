@@ -6,7 +6,7 @@ export const Styles = {
   },
   form: {
     backgroundColor: Colors.gray,
-    height: '60vh',
+    height: '65vh',
     width: '484px',
     borderRadius: '32px',
     padding: '25px',

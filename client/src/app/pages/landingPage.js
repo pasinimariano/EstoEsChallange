@@ -2,11 +2,19 @@ import React from 'react'
 import { Container, Col, Row } from 'react-bootstrap'
 
 import { Login } from '../components/auth/login'
+import { Create } from '../components/auth/create'
 import { Statement } from './statements/landingPageStatement'
 import { Styles } from './styles/landingPageStyles.js'
 
-export const LandingPage = () => {
-  const { loginValues, render, setRender, serverError, dispatch } = Statement()
+export const LandingPage = ({ userState, allUsers }) => {
+  const {
+    loginValues,
+    createValues,
+    render,
+    setRender,
+    serverError,
+    dispatch
+  } = Statement()
 
   return (
     <div
@@ -22,9 +30,17 @@ export const LandingPage = () => {
                 setRender={setRender}
                 serverError={serverError}
                 dispatch={dispatch}
+                allUsersState={allUsers}
               />
             ) : (
-              <h2>CREAR</h2>
+              <Create
+                createValues={createValues}
+                setRender={setRender}
+                serverError={serverError}
+                dispatch={dispatch}
+                userState={userState}
+                allUsersState={allUsers}
+              />
             )}
           </Col>
         </Row>

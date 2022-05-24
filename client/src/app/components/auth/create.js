@@ -1,30 +1,39 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useSelector } from 'react-redux'
 import { Form, Button, Image, Card } from 'react-bootstrap'
 import { Formik } from 'formik'
 
 import { FormGroup } from '../commons/formGroup'
-import { loginUserSchema } from '../commons/schemas'
-import { loginUser } from '../../redux/features/authSlice'
+import { createUserSchema } from '../commons/schemas'
+import { createUser, loginUser } from '../../redux/features/authSlice'
 import Logo from '../../assets/logo.png'
 import { Styles } from './styles/loginStyles.js'
 
-export const Login = ({
-  loginValues,
+export const Create = ({
+  createValues,
   setRender,
   serverError,
   dispatch,
   allUsersState
 }) => {
+  const created = useSelector(state => state.auth.created)
+
+  useEffect(() => {
+    if (created) dispatch(loginUser(created, allUsersState))
+  }, [allUsersState])
+
   return (
     <Card style={Styles.mainContainer}>
       <Card.Body className='d-flex flex-column align-items-center'>
         <Image src={Logo} alt='EstoEsLogo' style={Styles.logo} />
-        <h3 style={Styles.title}>¡Bienvenid@ nuevamente!</h3>
-        <h3 style={Styles.subtitle}>Continúa trabajando en tiempo real</h3>
+        <h3 style={Styles.title}>¡Bienvenid@ a Esto Es!</h3>
+        <h3 style={Styles.subtitle}>
+          Gestiona todos tus proyectos en tiempo real
+        </h3>
         <Formik
-          initialValues={loginValues}
-          validationSchema={loginUserSchema}
-          onSubmit={values => dispatch(loginUser(values, allUsersState))}
+          initialValues={createValues}
+          validationSchema={createUserSchema}
+          onSubmit={values => dispatch(createUser(values, allUsersState))}
         >
           {({ handleSubmit, handleChange, values, touched, errors }) => (
             <Form
@@ -32,6 +41,26 @@ export const Login = ({
               onSubmit={handleSubmit}
               className='d-flex flex-column align-items-center'
             >
+              <FormGroup
+                type='text'
+                name='firstname'
+                placeholder='Nombre'
+                values={values.firstname}
+                handleChange={handleChange}
+                touched={touched.firstname}
+                errors={errors.firstname}
+                style={Styles.form}
+              />
+              <FormGroup
+                type='text'
+                name='lastname'
+                placeholder='Apellido'
+                values={values.lastname}
+                handleChange={handleChange}
+                touched={touched.lastname}
+                errors={errors.lastname}
+                style={Styles.form}
+              />
               <FormGroup
                 type='email'
                 name='email'
@@ -54,7 +83,7 @@ export const Login = ({
                 style={Styles.form}
               />
               <Button type='submit' style={Styles.button}>
-                Sign in
+                Create user
               </Button>
               {serverError ? <h6 style={Styles.error}>{serverError}</h6> : null}
             </Form>
@@ -65,8 +94,8 @@ export const Login = ({
         style={Styles.footer}
         className='d-flex justify-content-center'
       >
-        <h6 style={Styles.title} onClick={() => setRender('create')}>
-          ¿Todavía no tienes cuenta? Creala aquí
+        <h6 style={Styles.title} onClick={() => setRender('login')}>
+          ¿Ya posees una cuenta? Registrate aquí
         </h6>
       </Card.Footer>
     </Card>

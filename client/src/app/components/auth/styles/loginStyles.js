@@ -14,9 +14,14 @@ export const Styles = {
     color: Colors.dark,
     fontWeight: 'bolder'
   },
+  subtitle: {
+    color: Colors.dark,
+    fontWeight: 'bolder',
+    fontSize: '13px'
+  },
   form: {
     width: '260px',
-    margin: '15px'
+    margin: '8px'
   },
   button: {
     width: '260px',
