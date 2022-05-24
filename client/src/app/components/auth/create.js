@@ -42,7 +42,7 @@ export const Create = ({
               <FormGroup
                 type='text'
                 name='firstname'
-                placeholder='Nombre'
+                placeholder='Firstname'
                 values={values.firstname}
                 handleChange={handleChange}
                 touched={touched.firstname}
@@ -52,7 +52,7 @@ export const Create = ({
               <FormGroup
                 type='text'
                 name='lastname'
-                placeholder='Apellido'
+                placeholder='Lastname'
                 values={values.lastname}
                 handleChange={handleChange}
                 touched={touched.lastname}

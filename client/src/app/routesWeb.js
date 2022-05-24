@@ -16,7 +16,7 @@ export const RoutesWeb = ({ user, allUsers }) => {
       <Route
         exact
         path='/home'
-        element={!user ? <Navigate to='/' /> : <HomePage />}
+        element={!user ? <Navigate to='/' /> : <HomePage allUsers={allUsers} />}
       />
       <Route
         exact

@@ -1,13 +1,17 @@
 import { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import { v4 as uuidv4 } from 'uuid'
 
 export const Statement = () => {
   const [formValues, setFormValues] = useState({
+    id: uuidv4(),
     name: '',
     description: '',
     manager: '',
     assigned_to: '',
-    status: ''
+    status: '',
+    created_at: Date().toLocaleString(),
+    updated_at: ''
   })
 
   const status = [
