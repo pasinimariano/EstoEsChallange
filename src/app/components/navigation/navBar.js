@@ -1,16 +1,24 @@
 import React from 'react'
-import { Navbar, Nav, Container } from 'react-bootstrap'
+import { useDispatch } from 'react-redux'
+import { Navbar, Nav } from 'react-bootstrap'
 import { HiHome } from 'react-icons/hi'
-import { AiFillFolderAdd, AiFillEdit } from 'react-icons/ai'
+import { AiFillFolderAdd } from 'react-icons/ai'
 import { SiAboutdotme } from 'react-icons/si'
 
 import Logo from '../../assets/logo.png'
+import { logoutUser } from '../../redux/features/authSlice'
 import { Styles } from './styles/navBarStyles'
 
 export const Navigation = ({ location }) => {
+  const dispatch = useDispatch()
   return (
     <Navbar bg='light' className='d-flex align-items-end'>
-      <img alt='' src={Logo} className='d-inline-block align-top m-2' />
+      <img
+        alt=''
+        src={Logo}
+        className='d-inline-block align-top m-2'
+        onClick={() => dispatch(logoutUser())}
+      />
       <Navbar.Collapse id='basic-navbar-nav'>
         <Nav className='me-auto'>
           <Nav.Link href='/home'>

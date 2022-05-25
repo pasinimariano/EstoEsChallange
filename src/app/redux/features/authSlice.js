@@ -18,6 +18,7 @@ export const AuthSlice = createSlice({
       state.created = action.payload
     },
     logOut: state => {
+      console.log('llegue')
       state.logged = false
       state.error = ''
       state.created = false
@@ -61,7 +62,7 @@ export const createUser = data => async dispatch => {
   }
 }
 
-export const logoutUser = dispatch => {
+export const logoutUser = () => dispatch => {
   dispatch(logOut())
 }
 
