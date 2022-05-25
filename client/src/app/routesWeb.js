@@ -5,6 +5,7 @@ import { LandingPage } from './pages/landingPage'
 import { HomePage } from './pages/homePage'
 import { AddProjectPage } from './pages/addProjectPage'
 import { ProjectDetails } from './pages/projectDetails'
+import { AboutUs } from './pages/aboutUsPage'
 
 export const RoutesWeb = ({ user, allUsers }) => {
   return (
@@ -30,6 +31,11 @@ export const RoutesWeb = ({ user, allUsers }) => {
         exact
         path='/project/:id'
         element={!user ? <Navigate to='/' /> : <ProjectDetails />}
+      />
+      <Route
+        exact
+        path='/about'
+        element={!user ? <Navigate to='/' /> : <AboutUs />}
       />
     </Routes>
   )
