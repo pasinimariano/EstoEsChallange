@@ -4,6 +4,7 @@ import { Routes, Route, Navigate } from 'react-router-dom'
 import { LandingPage } from './pages/landingPage'
 import { HomePage } from './pages/homePage'
 import { AddProjectPage } from './pages/addProjectPage'
+import { ProjectDetails } from './pages/projectDetails'
 
 export const RoutesWeb = ({ user, allUsers }) => {
   return (
@@ -24,6 +25,11 @@ export const RoutesWeb = ({ user, allUsers }) => {
         element={
           !user ? <Navigate to='/' /> : <AddProjectPage allUsers={allUsers} />
         }
+      />
+      <Route
+        exact
+        path='/project/:id'
+        element={!user ? <Navigate to='/' /> : <ProjectDetails />}
       />
     </Routes>
   )

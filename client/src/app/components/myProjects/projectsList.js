@@ -1,5 +1,6 @@
 import React from 'react'
-import { Container, Card, Image, Col, Form } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
+import { Container, Card, Image, Col, Form, Button } from 'react-bootstrap'
 
 import { Pagination } from './pagination'
 import { ModalUpdate } from './modalUpdate'
@@ -80,6 +81,14 @@ export const ProjectList = ({
                 style={Styles.card}
                 onClick={() => setModalShow({ isOpen: true, data: project })}
               >
+                <Card.Header className='d-flex justify-content-end'>
+                  <Link
+                    to={`/project/${project.id}`}
+                    state={{ project, manager: user, assigned: assignation }}
+                  >
+                    <Button style={Styles.button}> +Info </Button>
+                  </Link>
+                </Card.Header>
                 <Card.Title
                   style={Styles.titleContainer}
                   className='d-flex flex-column justify-content-center align-items-center'
