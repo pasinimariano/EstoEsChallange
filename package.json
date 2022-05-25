@@ -4,10 +4,13 @@
   "description": "Challage from Esto Es, using React. The configuration was made from scratch.",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack serve",
-    "start": "node server.js",
-    "postinstall": "ng build",
-    "heroku-postbuild": "webpack --mode production"
+    "build": "webpack --mode production",
+    "start-all": "npm run build && node src/server/index.js",
+    "client": "webpack-dev-server --mode development --devtool inline-source-map --hot",
+    "server": "nodemon src/server/index.js",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "heroku-postbuild": "npm run build",
+    "start": "node src/server/index.js"
   },
   "author": "Mariano L. Pasini",
   "license": "ISC",
@@ -32,6 +35,7 @@
     "axios": "^0.27.2",
     "express": "^4.18.1",
     "formik": "^2.2.9",
+    "nodemon": "^2.0.16",
     "react": "^18.1.0",
     "react-bootstrap": "^2.4.0",
     "react-dom": "^18.1.0",
