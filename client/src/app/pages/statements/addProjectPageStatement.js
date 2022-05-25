@@ -8,7 +8,7 @@ export const Statement = () => {
     name: '',
     description: '',
     manager: '',
-    assigned_to: '',
+    assigned: '',
     status: '',
     created_at: Date().toLocaleString(),
     updated_at: ''

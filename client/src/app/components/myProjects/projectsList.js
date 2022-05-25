@@ -2,22 +2,31 @@ import React from 'react'
 import { Container, Card, Image, Col, Form } from 'react-bootstrap'
 
 import { Pagination } from './pagination'
+import { ModalUpdate } from './modalUpdate'
 import { Styles } from './styles/listStyles'
 
 export const ProjectList = ({
+  modalShow,
+  setModalShow,
   selection,
   pagination,
   status,
   indexFirstProject,
   indexLastProject,
+  formValues,
+  dispatch,
+  setFormValues,
   projectsXpage,
+  created,
+  serverError,
   allProjects,
   allUsers,
   getUserById,
   nextPage,
   prevPage,
   handleNameSelection,
-  handleStatusSelection
+  handleStatusSelection,
+  handleForm
 }) => {
   return (
     <Container>
@@ -59,14 +68,18 @@ export const ProjectList = ({
         {allProjects.length === 0 ? (
           <h4> Create projects to view them here </h4>
         ) : pagination.length === 0 ? (
-          <h4>Loading...</h4>
+          <h4> Nothing to show </h4>
         ) : (
           pagination &&
           pagination.map(project => {
             const user = getUserById(project.manager, allUsers)
-            const assignation = getUserById(project.assigned_to, allUsers)
+            const assignation = getUserById(project.assigned, allUsers)
             return (
-              <Card key={project.id} style={Styles.card}>
+              <Card
+                key={project.id}
+                style={Styles.card}
+                onClick={() => setModalShow({ isOpen: true, data: project })}
+              >
                 <Card.Title
                   style={Styles.titleContainer}
                   className='d-flex flex-column justify-content-center align-items-center'
@@ -124,6 +137,20 @@ export const ProjectList = ({
           nextPage={nextPage}
           prevPage={prevPage}
           allProjects={allProjects}
+        />
+        <ModalUpdate
+          data={modalShow.data}
+          allUsers={allUsers}
+          dispatch={dispatch}
+          created={created}
+          serverError={serverError}
+          formValues={formValues}
+          setFormValues={setFormValues}
+          handleForm={handleForm}
+          show={modalShow.isOpen}
+          onHide={() => {
+            setModalShow({ isOpen: false, data: '' })
+          }}
         />
       </Container>
     </Container>

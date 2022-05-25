@@ -1,9 +1,8 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Formik } from 'formik'
-import { Form, Card, Container, Button } from 'react-bootstrap'
+import { Card, Container } from 'react-bootstrap'
 
-import { FormGroup } from '../commons/formGroup'
-import { Dropdowns } from '../commons/dropdown'
+import { FormProject } from '../commons/formProject'
 import { createProjectSchema } from '../commons/schemas'
 import { Styles } from './styles/projectStyles'
 
@@ -37,63 +36,23 @@ export const NewProject = ({
             validationSchema={createProjectSchema}
             onSubmit={(values, { resetForm }) => {
               dispatch(addNewProject(values))
-              if (created) resetForm()
+              resetForm()
             }}
           >
             {({ handleSubmit, handleChange, values, touched, errors }) => (
-              <Form
-                noValidate
-                onSubmit={handleSubmit}
-                className='d-flex flex-column align-items-center'
-                style={Styles.formContainer}
-              >
-                <FormGroup
-                  type='text'
-                  name='name'
-                  placeholder='Project Name'
-                  values={values.name}
-                  handleChange={handleChange}
-                  touched={touched.name}
-                  errors={errors.name}
-                  style={Styles.form}
-                />
-                <FormGroup
-                  type='text'
-                  name='description'
-                  placeholder='Description'
-                  values={values.description}
-                  handleChange={handleChange}
-                  touched={touched.description}
-                  errors={errors.description}
-                  style={Styles.form}
-                />
-
-                <Dropdowns
-                  label='Project Manager'
-                  name='manager'
-                  values={values.manager}
-                  onChange={handleChange}
-                  state={allUsers}
-                  styles={Styles.form}
-                />
-                <Dropdowns
-                  label='Status'
-                  name='status'
-                  values={values.status}
-                  onChange={handleChange}
-                  state={status}
-                  styles={Styles.form}
-                />
-                <Button type='submit' style={Styles.button}>
-                  Create
-                </Button>
-                {serverError ? (
-                  <h6 style={Styles.error}>{serverError}</h6>
-                ) : null}
-                {created ? (
-                  <h6 style={Styles.success}>Project created successfully</h6>
-                ) : null}
-              </Form>
+              <FormProject
+                Styles={Styles}
+                status={status}
+                allUsers={allUsers}
+                errors={errors}
+                touched={touched}
+                handleChange={handleChange}
+                handleSubmit={handleSubmit}
+                values={values}
+                created={created}
+                serverError={serverError}
+                buttonText='Create'
+              />
             )}
           </Formik>
         </Card.Body>

@@ -16,6 +16,14 @@ export const ProjectsSlices = createSlice({
       state.created = true
       state.error = ''
     },
+    update: (state, action) => {
+      const index = state.projects.findIndex(
+        obj => obj.id === action.payload.id
+      )
+      state.projects[index] = action.payload
+      state.created = true
+      state.error = ''
+    },
     setError: (state, action) => {
       state.error = action.payload
     },
@@ -46,8 +54,13 @@ export const getPagination = (projects, page, offset) => dispatch => {
   dispatch(setPagination(paginatedProjects))
 }
 
+export const updateProject = data => dispatch => {
+  dispatch(update(data))
+}
+
 export const {
   addNew,
+  update,
   setError,
   setCreated,
   setPagination

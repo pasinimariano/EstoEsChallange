@@ -6,21 +6,27 @@ import { getPagination } from '../redux/features/projectsSlices'
 
 export const HomePage = ({ allUsers }) => {
   const {
+    modalShow,
+    setModalShow,
     filter,
     handleFilter,
     selection,
     indexFirstProject,
     indexLastProject,
     projectsXpage,
+    status,
+    formValues,
+    setFormValues,
     dispatch,
     pagination,
     allProjects,
+    serverError,
     getUserById,
     nextPage,
     prevPage,
     handleNameSelection,
     handleStatusSelection,
-    status
+    handleForm
   } = Statement()
 
   useEffect(() => {
@@ -35,19 +41,26 @@ export const HomePage = ({ allUsers }) => {
 
   return (
     <ProjectList
+      modalShow={modalShow}
+      setModalShow={setModalShow}
       selection={selection}
       pagination={pagination}
       status={status}
       indexFirstProject={indexFirstProject}
       indexLastProject={indexLastProject}
       projectsXpage={projectsXpage}
+      formValues={formValues}
+      setFormValues={setFormValues}
       allProjects={allProjects}
+      serverError={serverError}
+      dispatch={dispatch}
       allUsers={allUsers}
       getUserById={getUserById}
       nextPage={nextPage}
       prevPage={prevPage}
       handleNameSelection={handleNameSelection}
       handleStatusSelection={handleStatusSelection}
+      handleForm={handleForm}
     />
   )
 }

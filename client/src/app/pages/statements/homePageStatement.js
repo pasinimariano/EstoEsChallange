@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux'
 export const Statement = () => {
   // States
 
+  const [modalShow, setModalShow] = useState({ isOpen: false, data: '' })
   const [filter, setFilter] = useState([])
   const [selection, setSelection] = useState({
     choice: 'all',
@@ -22,12 +23,24 @@ export const Statement = () => {
     'done',
     'standby'
   ]
+  const [formValues, setFormValues] = useState({
+    id: '',
+    name: '',
+    description: '',
+    manager: '',
+    assigned: '',
+    status: '',
+    created_at: '',
+    updated_at: Date().toLocaleString()
+  })
 
   // Store
 
   const dispatch = useDispatch()
   const allProjects = useSelector(state => state.projects.projects)
   const pagination = useSelector(state => state.projects.pagination)
+  const created = useSelector(state => state.projects.created)
+  const serverError = useSelector(state => state.projects.error)
 
   // Handle Changes
 
@@ -109,21 +122,37 @@ export const Statement = () => {
     else if (selection.status) setFilter(getStatus(selection.status))
   }
 
+  const handleForm = event => {
+    const { name, value } = event.target
+
+    setFormValues(prevState => ({
+      ...prevState,
+      [name]: value
+    }))
+  }
+
   return {
+    modalShow,
+    setModalShow,
     filter,
     handleFilter,
     selection,
     status,
+    formValues,
+    setFormValues,
     indexFirstProject,
     indexLastProject,
     projectsXpage,
+    serverError,
     dispatch,
     allProjects,
+    created,
     pagination,
     getUserById,
     nextPage,
     prevPage,
     handleNameSelection,
-    handleStatusSelection
+    handleStatusSelection,
+    handleForm
   }
 }
