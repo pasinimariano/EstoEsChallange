@@ -35,5 +35,9 @@ export const Styles = {
     marginLeft: '20px',
     width: '80px',
     border: 'none'
+  },
+  form: {
+    width: '380px',
+    textAlign: 'center'
   }
 }

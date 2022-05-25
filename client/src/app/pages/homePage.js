@@ -6,6 +6,9 @@ import { getPagination } from '../redux/features/projectsSlices'
 
 export const HomePage = ({ allUsers }) => {
   const {
+    filter,
+    handleFilter,
+    selection,
     indexFirstProject,
     indexLastProject,
     projectsXpage,
@@ -14,24 +17,37 @@ export const HomePage = ({ allUsers }) => {
     allProjects,
     getUserById,
     nextPage,
-    prevPage
+    prevPage,
+    handleNameSelection,
+    handleStatusSelection,
+    status
   } = Statement()
 
   useEffect(() => {
-    dispatch(getPagination(allProjects, indexFirstProject, indexLastProject))
-  }, [indexFirstProject, indexLastProject])
+    handleFilter()
+  }, [selection])
+
+  useEffect(() => {
+    if (filter) {
+      dispatch(getPagination(filter, indexFirstProject, indexLastProject))
+    }
+  }, [filter, indexFirstProject, indexLastProject])
 
   return (
     <ProjectList
+      selection={selection}
       pagination={pagination}
+      status={status}
       indexFirstProject={indexFirstProject}
       indexLastProject={indexLastProject}
       projectsXpage={projectsXpage}
       allProjects={allProjects}
+      allUsers={allUsers}
       getUserById={getUserById}
       nextPage={nextPage}
       prevPage={prevPage}
-      allUsers={allUsers}
+      handleNameSelection={handleNameSelection}
+      handleStatusSelection={handleStatusSelection}
     />
   )
 }

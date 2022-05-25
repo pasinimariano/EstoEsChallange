@@ -1,5 +1,6 @@
 import React from 'react'
 import { Container, Button } from 'react-bootstrap'
+import { FcNext, FcPrevious } from 'react-icons/fc'
 
 import { Styles } from './styles/listStyles'
 
@@ -27,14 +28,14 @@ export const Pagination = ({
         disabled={indexFirstProject === 0 ? true : false}
         style={Styles.button}
       >
-        prev
+        <FcPrevious />
       </Button>
       <Button
         onClick={() => nextPage(allProjects)}
         style={Styles.button}
         disabled={indexLastProject > allProjects.length ? true : false}
       >
-        next
+        <FcNext />
       </Button>
     </Container>
   )

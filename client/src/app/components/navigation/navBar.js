@@ -25,12 +25,6 @@ export const Navigation = ({ location }) => {
               style={location === '/newproject' ? Styles.selected : Styles.icon}
             />
           </Nav.Link>
-          <Nav.Link href='/edit'>
-            <AiFillEdit
-              size={'25px'}
-              style={location === '/edit' ? Styles.selected : Styles.icon}
-            />
-          </Nav.Link>
           <Nav.Link href='/about'>
             <SiAboutdotme
               size={'25px'}
