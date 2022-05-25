@@ -19,7 +19,9 @@ export const ModalDelete = props => {
       <Modal.Body>Are you sure you want to delete the project?</Modal.Body>
       <Modal.Footer>
         <Link to='/home'>
-          <Button style={props.Styles.deleteButton}> Delete </Button>
+          <Button style={props.Styles.deleteButton} onClick={props.onClick}>
+            Delete
+          </Button>
         </Link>
       </Modal.Footer>
     </Modal>

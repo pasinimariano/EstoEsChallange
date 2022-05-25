@@ -24,6 +24,11 @@ export const ProjectsSlices = createSlice({
       state.created = true
       state.error = ''
     },
+    myDelete: (state, action) => {
+      const index = state.projects.findIndex(obj => obj.id === action.payload)
+      state.projects.splice(index, 1)
+      state.error = ''
+    },
     setError: (state, action) => {
       state.error = action.payload
     },
@@ -58,9 +63,14 @@ export const updateProject = data => dispatch => {
   dispatch(update(data))
 }
 
+export const deleteProject = id => dispatch => {
+  dispatch(myDelete(id))
+}
+
 export const {
   addNew,
   update,
+  myDelete,
   setError,
   setCreated,
   setPagination

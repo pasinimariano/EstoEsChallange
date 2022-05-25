@@ -1,14 +1,21 @@
-import React, { useState } from 'react'
-import { useLocation, Link } from 'react-router-dom'
+import React from 'react'
+import { Link } from 'react-router-dom'
 import { Card, Container, Button } from 'react-bootstrap'
 
 import { ModalDelete } from '../components/myProjects/modalDelete'
+import { Statement } from './statements/projectDetailsStatement'
+import { deleteProject } from '../redux/features/projectsSlices'
 import { Styles } from './styles/projectDetailsStyles'
 
 export const ProjectDetails = () => {
-  const [modalShow, setModalShow] = useState(false)
-  const location = useLocation()
-  const { project, manager, assigned } = location.state
+  const {
+    modalShow,
+    setModalShow,
+    project,
+    manager,
+    assigned,
+    dispatch
+  } = Statement()
 
   return (
     <Container
@@ -43,6 +50,7 @@ export const ProjectDetails = () => {
         onHide={() => {
           setModalShow(false)
         }}
+        onClick={() => dispatch(deleteProject(project.id))}
         Styles={Styles}
       />
     </Container>
