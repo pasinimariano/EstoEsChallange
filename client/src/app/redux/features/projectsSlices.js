@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
   projects: [],
+  pagination: [],
   created: '',
   error: ''
 }
@@ -20,6 +21,9 @@ export const ProjectsSlices = createSlice({
     },
     setCreated: (state, action) => {
       state.created = action.payload
+    },
+    setPagination: (state, action) => {
+      state.pagination = action.payload
     }
   }
 })
@@ -36,5 +40,16 @@ export const deleteCreated = data => dispatch => {
   dispatch(setCreated(data))
 }
 
-export const { addNew, setError, setCreated } = ProjectsSlices.actions
+export const getPagination = (projects, page, offset) => dispatch => {
+  const paginatedProjects = projects.slice(page, offset)
+
+  dispatch(setPagination(paginatedProjects))
+}
+
+export const {
+  addNew,
+  setError,
+  setCreated,
+  setPagination
+} = ProjectsSlices.actions
 export default ProjectsSlices.reducer

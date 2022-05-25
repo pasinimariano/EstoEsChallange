@@ -20,5 +20,20 @@ export const Styles = {
   avatar: {
     height: '40px',
     marginRight: '10px'
+  },
+  paginationContainer: {
+    height: '5vh',
+    marginTop: '20px'
+  },
+  legend: {
+    color: Colors.dark,
+    fontWeight: 'bolder',
+    marginLeft: '5px'
+  },
+  button: {
+    backgroundColor: Colors.green,
+    marginLeft: '20px',
+    width: '80px',
+    border: 'none'
   }
 }

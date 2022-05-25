@@ -16,7 +16,6 @@ export const App = () => {
     <div className={Styles}>
       {location !== '/' ? <Navigation location={location} /> : null}
       <RoutesWeb user={userState} allUsers={allUsersState} />
-      {location !== '/' ? <Footer /> : null}
     </div>
   )
 }

@@ -15,12 +15,12 @@ export const Statement = () => {
   })
 
   const status = [
-    { id: 1, firstname: 'unassigned', lastname: '' },
-    { id: 2, firstname: 'assigned', lastname: '' },
-    { id: 3, firstname: 'on-progress', lastname: '' },
-    { id: 4, firstname: 'review', lastname: '' },
-    { id: 5, firstname: 'done', lastname: '' },
-    { id: 6, firstname: 'standby', lastname: '' }
+    { id: 'unassigned', firstname: 'unassigned', lastname: '' },
+    { id: 'assigned', firstname: 'assigned', lastname: '' },
+    { id: 'on-progress', firstname: 'on-progress', lastname: '' },
+    { id: 'review', firstname: 'review', lastname: '' },
+    { id: 'done', firstname: 'done', lastname: '' },
+    { id: 'standby', firstname: 'standby', lastname: '' }
   ]
 
   const dispatch = useDispatch()
