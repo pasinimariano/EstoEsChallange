@@ -3,17 +3,15 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const Dotenv = require('dotenv-webpack')
 
 const isProduction = process.env.NODE_ENV === 'production'
-const publicPath = process.env.PUBLIC_URL || '/'
 
 module.exports = {
   mode: isProduction ? 'production' : 'development',
   bail: isProduction,
   entry: {
-    src: ['./src/index.js']
+    src: './src/index.js'
   },
   output: {
-    path: path.resolve(__dirname, 'dist'),
-    publicPath,
+    path: path.resolve(__dirname, 'build'),
     filename: 'bundle.js'
   },
   resolve: {
@@ -43,7 +41,8 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './public/index.html'
+      template: path.resolve(__dirname, 'public/index.html'),
+      filename: 'index.html'
     }),
     new Dotenv({
       path: './.env',

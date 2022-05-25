@@ -4,11 +4,9 @@
   "description": "Challage from Esto Es, using React. The configuration was made from scratch.",
   "main": "index.js",
   "scripts": {
-    "start": "webpack serve --config ./webpack.config.js --mode development",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
-    "build": "webpack --mode production",
-    "heroku-prebuild": "npm install --dev"
+    "dev": "webpack-dev-server",
+    "start": "node server.js",
+    "build": "webpack --config ./webpack.config.js --mode='production' --progress"
   },
   "author": "Mariano L. Pasini",
   "license": "ISC",
