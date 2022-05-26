@@ -4,7 +4,7 @@ import { ProjectList } from '../components/myProjects/projectsList'
 import { Statement } from './statements/homePageStatement'
 import { getPagination } from '../redux/features/projectsSlices'
 
-export const HomePage = ({ allUsers }) => {
+export const HomePage = ({ allUsers, isRowBased }) => {
   const {
     modalShow,
     setModalShow,
@@ -61,6 +61,7 @@ export const HomePage = ({ allUsers }) => {
       handleNameSelection={handleNameSelection}
       handleStatusSelection={handleStatusSelection}
       handleForm={handleForm}
+      isRowBased={isRowBased}
     />
   )
 }

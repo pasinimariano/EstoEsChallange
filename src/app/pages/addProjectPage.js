@@ -4,7 +4,7 @@ import { NewProject } from '../components/myProjects/newProject'
 import { Statement } from './statements/addProjectPageStatement'
 import { addNewProject, deleteCreated } from '../redux/features/projectsSlices'
 
-export const AddProjectPage = ({ allUsers }) => {
+export const AddProjectPage = ({ allUsers, isRowBased }) => {
   const {
     formValues,
     setFormValues,
@@ -30,6 +30,7 @@ export const AddProjectPage = ({ allUsers }) => {
       created={created}
       addNewProject={addNewProject}
       setFormValues={setFormValues}
+      isRowBased={isRowBased}
     />
   )
 }

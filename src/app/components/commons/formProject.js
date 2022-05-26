@@ -15,14 +15,15 @@ export const FormProject = ({
   values,
   created,
   serverError,
-  buttonText
+  buttonText,
+  isRowBased
 }) => {
   return (
     <Form
       noValidate
       onSubmit={handleSubmit}
       className='d-flex flex-column align-items-center'
-      style={Styles.formContainer}
+      style={Styles.formContainer(isRowBased)}
     >
       <FormGroup
         type='text'

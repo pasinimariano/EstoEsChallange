@@ -53,16 +53,16 @@ export const ModalUpdate = props => {
       aria-labelledby='contained-modal-title-vcenter'
       centered
     >
-      <Modal.Header closeButton className={Styles.modalHeader}>
+      <Modal.Header closeButton>
         <Modal.Title id='contained-modal-title-vcenter'>
           Update Data
         </Modal.Title>
       </Modal.Header>
       <Modal.Body
-        style={Styles.modalContainer}
+        style={Styles.modalContainer(props.isRowBased)}
         className='d-flex flex-column justify-content-center align-items-center'
       >
-        <h5>{`ID: ${data.id}`}</h5>
+        <h5 style={Styles.title(props.isRowBased)}>{`ID: ${data.id}`}</h5>
         {props.formValues.id ? (
           <Formik
             initialValues={props.formValues}
@@ -86,6 +86,7 @@ export const ModalUpdate = props => {
                 created={props.created}
                 serverError={props.serverError}
                 buttonText='Update'
+                isRowBased={props.isRowBased}
               />
             )}
           </Formik>

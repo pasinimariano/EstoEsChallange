@@ -1,16 +1,17 @@
 import { Colors } from '../../../mainStyles'
 
 export const Styles = {
-  mainContainer: {
-    height: '85vh'
-  },
-  card: {
-    height: '65vh',
-    width: '480px',
+  mainContainer: isRowBased => ({
+    height: isRowBased ? '160vh' : '85vh'
+  }),
+  card: isRowBased => ({
+    height: isRowBased ? '145vh' : '75vh',
+    width: isRowBased ? '95%' : '480px',
     backgroundColor: Colors.gray,
     border: 'none',
-    borderRadius: '20px'
-  },
+    borderRadius: '20px',
+    marginTop: isRowBased ? '2px' : '80px'
+  }),
   title: {
     height: '10%',
     width: '100%',
@@ -18,9 +19,9 @@ export const Styles = {
     fontWeight: 'bolder',
     color: Colors.dark
   },
-  formContainer: {
-    width: '380px'
-  },
+  formContainer: isRowBased => ({
+    width: isRowBased ? '90%' : '380px'
+  }),
   form: {
     width: '100%',
     margin: '20px'

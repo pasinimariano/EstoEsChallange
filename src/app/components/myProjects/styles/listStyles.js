@@ -1,15 +1,15 @@
 import { Colors } from '../../../mainStyles'
 
 export const Styles = {
-  mainContainer: {
-    marginTop: '10px'
-  },
-  card: {
+  mainContainer: isRowBased => ({
+    marginTop: isRowBased ? '35px' : '10px'
+  }),
+  card: isRowBased => ({
     backgroundColor: Colors.gray,
-    height: '30vh',
+    height: isRowBased ? '65vh' : '30vh',
     width: '480px',
     margin: '10px'
-  },
+  }),
   titleContainer: {
     backgroundColor: Colors.beige
   },
@@ -21,10 +21,10 @@ export const Styles = {
     height: '40px',
     marginRight: '10px'
   },
-  paginationContainer: {
-    height: '5vh',
-    marginTop: '20px'
-  },
+  paginationContainer: isRowBased => ({
+    height: isRowBased ? '15vh' : '5vh',
+    marginTop: isRowBased ? '50px' : '20px'
+  }),
   legend: {
     color: Colors.dark,
     fontWeight: 'bolder',
@@ -36,8 +36,8 @@ export const Styles = {
     width: '80px',
     border: 'none'
   },
-  form: {
-    width: '380px',
+  form: isRowBased => ({
+    width: isRowBased ? '250px' : '380px',
     textAlign: 'center'
-  }
+  })
 }

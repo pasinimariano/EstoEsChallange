@@ -1,13 +1,13 @@
 import { Colors } from '../../mainStyles'
 
 export const Styles = {
-  mainContainer: {
-    height: '55vh',
-    marginTop: '25px'
-  },
-  cardContainer: {
-    height: '70%'
-  },
+  mainContainer: isRowBased => ({
+    height: isRowBased ? '100vh' : '55vh',
+    marginTop: isRowBased ? '5px' : '25px'
+  }),
+  cardContainer: isRowBased => ({
+    height: isRowBased ? '80vh' : '70%'
+  }),
   homeButton: {
     backgroundColor: Colors.green,
     border: 'none'

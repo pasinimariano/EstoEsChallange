@@ -27,7 +27,8 @@ export const ProjectList = ({
   prevPage,
   handleNameSelection,
   handleStatusSelection,
-  handleForm
+  handleForm,
+  isRowBased
 }) => {
   return (
     <Container>
@@ -40,7 +41,7 @@ export const ProjectList = ({
             name='name'
             value={selection.name}
             onChange={handleNameSelection}
-            style={Styles.form}
+            style={Styles.form(isRowBased)}
           />
         </Form>
         <Form className='d-flex flex-column align-items-center justify-content-center'>
@@ -50,7 +51,7 @@ export const ProjectList = ({
             name='status'
             value={selection.status}
             onChange={handleStatusSelection}
-            style={Styles.form}
+            style={Styles.form(isRowBased)}
           >
             {status.map(stat => {
               return (
@@ -63,7 +64,7 @@ export const ProjectList = ({
         </Form>
       </Container>
       <Container
-        style={Styles.mainContainer}
+        style={Styles.mainContainer(isRowBased)}
         className='d-flex flex-wrap justify-content-around'
       >
         {allProjects.length === 0 ? (
@@ -78,7 +79,7 @@ export const ProjectList = ({
             return (
               <Card
                 key={project.id}
-                style={Styles.card}
+                style={Styles.card(isRowBased)}
                 onClick={() => setModalShow({ isOpen: true, data: project })}
               >
                 <Card.Header className='d-flex justify-content-end'>
@@ -146,6 +147,7 @@ export const ProjectList = ({
           nextPage={nextPage}
           prevPage={prevPage}
           allProjects={allProjects}
+          isRowBased={isRowBased}
         />
         <ModalUpdate
           data={modalShow.data}
@@ -160,6 +162,7 @@ export const ProjectList = ({
           onHide={() => {
             setModalShow({ isOpen: false, data: '' })
           }}
+          isRowBased={isRowBased}
         />
       </Container>
     </Container>

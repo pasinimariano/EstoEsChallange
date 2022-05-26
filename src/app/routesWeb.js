@@ -7,35 +7,59 @@ import { AddProjectPage } from './pages/addProjectPage'
 import { ProjectDetails } from './pages/projectDetails'
 import { AboutUs } from './pages/aboutUsPage'
 
-export const RoutesWeb = ({ user, allUsers }) => {
+export const RoutesWeb = ({ user, allUsers, isRowBased }) => {
   return (
     <Routes>
       <Route
         exact
         path='/'
-        element={<LandingPage userState={user} allUsers={allUsers} />}
+        element={
+          <LandingPage
+            userState={user}
+            allUsers={allUsers}
+            isRowBased={isRowBased}
+          />
+        }
       />
       <Route
         exact
         path='/home'
-        element={!user ? <Navigate to='/' /> : <HomePage allUsers={allUsers} />}
+        element={
+          !user ? (
+            <Navigate to='/' />
+          ) : (
+            <HomePage allUsers={allUsers} isRowBased={isRowBased} />
+          )
+        }
       />
       <Route
         exact
         path='/newproject'
         element={
-          !user ? <Navigate to='/' /> : <AddProjectPage allUsers={allUsers} />
+          !user ? (
+            <Navigate to='/' />
+          ) : (
+            <AddProjectPage allUsers={allUsers} isRowBased={isRowBased} />
+          )
         }
       />
       <Route
         exact
         path='/project/:id'
-        element={!user ? <Navigate to='/' /> : <ProjectDetails />}
+        element={
+          !user ? (
+            <Navigate to='/' />
+          ) : (
+            <ProjectDetails isRowBased={isRowBased} />
+          )
+        }
       />
       <Route
         exact
         path='/about'
-        element={!user ? <Navigate to='/' /> : <AboutUs />}
+        element={
+          !user ? <Navigate to='/' /> : <AboutUs isRowBased={isRowBased} />
+        }
       />
     </Routes>
   )

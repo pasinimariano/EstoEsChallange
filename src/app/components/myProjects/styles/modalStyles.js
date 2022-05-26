@@ -1,12 +1,15 @@
 import { Colors } from '../../../mainStyles'
 
 export const Styles = {
-  modalContainer: {
-    height: '55vh'
-  },
-  formContainer: {
-    width: '80%'
-  },
+  modalContainer: isRowBased => ({
+    height: isRowBased ? '100%' : '55vh'
+  }),
+  formContainer: isRowBased => ({
+    width: isRowBased ? '90%' : '80%'
+  }),
+  title: isRowBased => ({
+    fontSize: isRowBased ? '12px' : '18px'
+  }),
   form: {
     width: '90%',
     margin: '10px'

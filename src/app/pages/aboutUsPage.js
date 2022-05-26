@@ -2,10 +2,12 @@ import React from 'react'
 import { Container, Image } from 'react-bootstrap'
 import Cv from '../assets/CvMarianoPasini.jpg'
 
-export const AboutUs = () => {
+import { Styles } from './styles/aboutUsStyles'
+
+export const AboutUs = ({ isRowBased }) => {
   return (
-    <Container>
-      <Image src={Cv} alt='CvMarianoPasini' />
+    <Container style={Styles.mainContainer(isRowBased)}>
+      <Image src={Cv} alt='CvMarianoPasini' style={Styles.image(isRowBased)} />
     </Container>
   )
 }

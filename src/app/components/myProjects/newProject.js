@@ -13,15 +13,16 @@ export const NewProject = ({
   serverError,
   allUsers,
   created,
-  addNewProject
+  addNewProject,
+  isRowBased
 }) => {
   return (
     <Container
       className='d-flex justify-content-center align-items-center'
-      style={Styles.mainContainer}
+      style={Styles.mainContainer(isRowBased)}
     >
       <Card
-        style={Styles.card}
+        style={Styles.card(isRowBased)}
         className='d-flex justify-content-center align-items-center'
       >
         <Card.Title
@@ -30,7 +31,7 @@ export const NewProject = ({
         >
           Create new project
         </Card.Title>
-        <Card.Body>
+        <Card.Body className='d-flex justify-content-center '>
           <Formik
             initialValues={formValues}
             validationSchema={createProjectSchema}
@@ -52,6 +53,7 @@ export const NewProject = ({
                 created={created}
                 serverError={serverError}
                 buttonText='Create'
+                isRowBased={isRowBased}
               />
             )}
           </Formik>

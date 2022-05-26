@@ -7,7 +7,7 @@ import { Statement } from './statements/projectDetailsStatement'
 import { deleteProject } from '../redux/features/projectsSlices'
 import { Styles } from './styles/projectDetailsStyles'
 
-export const ProjectDetails = () => {
+export const ProjectDetails = ({ isRowBased }) => {
   const {
     modalShow,
     setModalShow,
@@ -20,9 +20,9 @@ export const ProjectDetails = () => {
   return (
     <Container
       className='d-flex justify-content-center align-items-center'
-      style={Styles.mainContainer}
+      style={Styles.mainContainer(isRowBased)}
     >
-      <Card style={Styles.cardContainer}>
+      <Card style={Styles.cardContainer(isRowBased)}>
         <Card.Header className='d-flex justify-content-center'>{`ID: ${project.id}`}</Card.Header>
         <Card.Body className='d-flex flex-column justify-content-center'>
           <Card.Title> {project.name.toUpperCase()} </Card.Title>
